@@ -1,0 +1,10 @@
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  errors:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ needs.bla.outputs.duh }}"
+      - run: echo "${{ inputs.not-there }}"
