@@ -10,19 +10,6 @@ permissions:
 jobs:
   job-1:
     runs-on: ubuntu-latest
-    steps:
-    - run: |
-       response=$(curl -sS -f -I -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com)
-       echo $response
-       echo "-------------------------------------------------------------------------------------"       
-       $response | grep "X-OAuth-Scopes:"
-       echo "-------------------------------------------------------------------------------------"
-       temp=$(echo $response | grep ^x-oauth-scopes:)       
-       echo "-------------------------------------------------------------------------------------"
-       echo $temp
-       echo "-------------------------------------------------------------------------------------"
-       echo $temp | cut -d' ' -f2- | tr -d "[:space:]" | tr ',' '\n'
-       echo "-------------------------------------------------------------------------------------"
-       
+    steps:       
     - uses: actions/checkout@v3
     - uses: devops-actions/actionlint@update2
