@@ -12,9 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-       #curl -sS -f -I -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com
-       #echo "-------------------------------------------------------------------------------------"
-       temp=$(curl -sS -f -I -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com | grep ^x-oauth-scopes:)
+       response=$(curl -sS -f -I -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com)
+       echo "-------------------------------------------------------------------------------------"
+       echo $response | grep ^x-oauth-scopes:
+       echo "-------------------------------------------------------------------------------------"
+       temp=$(echo $response | grep ^x-oauth-scopes:)       
        echo "-------------------------------------------------------------------------------------"
        echo $temp
        echo "-------------------------------------------------------------------------------------"
