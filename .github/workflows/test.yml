@@ -11,5 +11,7 @@ jobs:
   job-1:
     runs-on: ubuntu-latest
     steps:
+    - run: |
+       curl -sS -f -I -H "Authorization: token ${GITHUB_TOKEN}" https://api.github.com | grep ^x-oauth-scopes: | cut -d' ' -f2- | tr -d "[:space:]" | tr ',' '\n'
     - uses: actions/checkout@v3
     - uses: devops-actions/actionlint@update2
