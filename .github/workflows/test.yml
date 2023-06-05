@@ -15,7 +15,7 @@ jobs:
        response=$(curl -sS -f -I -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com)
        echo $response
        echo "-------------------------------------------------------------------------------------"       
-       echo $response | grep "X-OAuth-Scopes:"
+       $response | grep "X-OAuth-Scopes:"
        echo "-------------------------------------------------------------------------------------"
        temp=$(echo $response | grep ^x-oauth-scopes:)       
        echo "-------------------------------------------------------------------------------------"
