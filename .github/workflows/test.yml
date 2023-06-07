@@ -9,3 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: devops-actions/actionlint@main
+    
+    - run: |
+        echo "${{ inputs.variable }}"
