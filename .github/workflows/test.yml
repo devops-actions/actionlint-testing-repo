@@ -2,10 +2,18 @@ on:
   push: 
 
   workflow_dispatch:
-
+    inputs:
+      variable:
+        default: Rob
+        
 jobs:
   job-1:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - uses: devops-actions/actionlint@main
+    
+    - run: |
+        echo "${{ inputs.variable }}"
+        
+    - run: echo "${{ github.event.pull_request.title }}"
